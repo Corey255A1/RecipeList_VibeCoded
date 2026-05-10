@@ -1,0 +1,6 @@
+{
+  "name": "Local PDF Vault",
+  "description": "A self-contained local PDF viewer with sorting and filtering, designed to run in air-gapped environments.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

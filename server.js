@@ -8,9 +8,10 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
-const PORT = 3000;
-const PDF_DIR = path.join(__dirname, 'pdfs');
-const TAGS_FILE = path.join(__dirname, 'tags.json');
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+const DATA_DIR = process.env.DATA_DIR || __dirname;
+const PDF_DIR = process.env.PDF_DIR || path.join(DATA_DIR, 'pdfs');
+const TAGS_FILE = process.env.TAGS_FILE || path.join(DATA_DIR, 'tags.json');
 
 const getTags = () => {
     if (!fs.existsSync(TAGS_FILE)) return {};
@@ -21,7 +22,7 @@ const getTags = () => {
     }
 };
 
-const saveTags = (tagsData: any) => {
+const saveTags = (tagsData) => {
     fs.writeFileSync(TAGS_FILE, JSON.stringify(tagsData, null, 2));
 };
 
